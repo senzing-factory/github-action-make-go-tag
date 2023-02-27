@@ -11,7 +11,10 @@ cd "${GITHUB_WORKSPACE}" || exit
 
 # git checkout main
 # git pull
-export GIT_SHA=$(git rev-list -n 1 ${GITHUB_REF_NAME})
+GIT_SHA=$(git rev-list -n 1 ${GITHUB_REF_NAME})
+
+
+echo ${GIT_SHA}
 
 env
 
