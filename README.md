@@ -39,7 +39,6 @@ prefixed with "v", whenever a semantically versioned tag is created.
             uses: Senzing/github-action-make-go-tag@main
     ```
 
-
 ## References
 
 1. Github workflow

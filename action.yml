@@ -1,12 +1,12 @@
 # action.yml
-name: 'Create v0.0.0 tag for Go module version'
-description: 'Create a new tag based on the Semantic Version for use in Go dependency management.'
+name: "Create vM.m.P tag for Go module version"
+description: "Create a new tag based on the Semantic Version for use in Go dependency management."
 author: support@senzing.com
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
 
 branding:
-  icon: 'git-pull-request'
-  color: 'red'
+  icon: "git-pull-request"
+  color: "red"
