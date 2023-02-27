@@ -8,10 +8,10 @@ create a Go module tag.
 
 ## Overview
 
-The repository holds and shows example usage of the github workflow that makes
-a tag in the format "vM.m.P", which is the
+This repository is a GitHub Workflow that makes
+a tag in the format "vM.m.P", which is a
 [Semantic Version](https://semver.org/)
-with a "v" prefix, from the actual Semantic Version.
+with a "v" prefix, whenever a semantically versioned tag is created.
 
 **Note:** As itself, "v0.0.0" is not a semantic version. See
 [Is “v1.2.3” a semantic version?](https://semver.org/#is-v123-a-semantic-version)
