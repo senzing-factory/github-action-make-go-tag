@@ -7,6 +7,9 @@ set -eu
 # Apply hotfix for 'fatal: unsafe repository' error.
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
+git config user.name "${GITHUB_ACTOR}"
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
 cd "${GITHUB_WORKSPACE}" || exit
 
 git checkout main
