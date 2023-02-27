@@ -9,14 +9,8 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
 cd "${GITHUB_WORKSPACE}" || exit
 
-# git checkout main
-# git pull
-GIT_SHA=$(git rev-list -n 1 ${GITHUB_REF_NAME})
-
-
-echo ${GIT_SHA}
-
-env
-
-git tag -a "v${GIT_TAG}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR}" ${GIT_SHA}
+git checkout main
+git pull
+export GIT_SHA=$(git rev-list -n 1 ${GITHUB_REF_NAME})
+git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR}" ${GIT_SHA}
 git push origin --tags
