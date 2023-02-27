@@ -13,7 +13,9 @@ git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 cd "${GITHUB_WORKSPACE}" || exit
 
 git checkout main
-git pull
 export GIT_SHA=$(git rev-list -n 1 ${GITHUB_REF_NAME})
+
+env
+
 git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR}" ${GIT_SHA}
-git push origin --tags
+git push origin "v${GITHUB_REF_NAME}"
