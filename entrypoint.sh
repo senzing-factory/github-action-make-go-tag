@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 set -eu
 
 # Apply hotfix for 'fatal: unsafe repository' error.
