@@ -30,7 +30,7 @@ with a "v" prefix, from the actual Semantic Version.
 
     jobs:
       build:
-        name: Make a v0.0.0 tag
+        name: Make a vM.m.P tag
         runs-on: ubuntu-latest
         steps:
           - name: Checkout repository
