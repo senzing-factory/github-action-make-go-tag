@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "alnum",
+    "buildx",
+    "CCLA",
+    "CODEOWNER",
+    "DOCKERHUB",
+    "ICLA",
+    "Senzing",
+    "stackoverflow",
+    "toplevel"
+  ],
+  "ignorePaths": [".git/**"]
+}
