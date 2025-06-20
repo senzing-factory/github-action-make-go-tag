@@ -18,30 +18,30 @@ prefixed with "v", whenever a semantically versioned tag is created.
 
 1. To use, create a `.github/workflows/make-go-tag.yaml` file with the following contents:
 
-    ```yaml
-    name: make-go-tag.yaml
+   ```yaml
+   name: make-go-tag.yaml
 
-    on:
-      push:
-        tags:
-          - "[0-9]+.[0-9]+.[0-9]+"
+   on:
+     push:
+       tags:
+         - "[0-9]+.[0-9]+.[0-9]+"
 
-    jobs:
-      build:
-        name: Make a vM.m.P tag
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout repository
-            uses: actions/checkout@v3
-          - name: Make go version tag
-            uses: senzing-factory/github-action-make-go-tag@v2
-    ```
+   jobs:
+     build:
+       name: Make a vM.m.P tag
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout repository
+           uses: actions/checkout@v3
+         - name: Make go version tag
+           uses: senzing-factory/github-action-make-go-tag@v2
+   ```
 
 ## References
 
 1. GitHub workflow
-    1. [Documentation]
-    1. [GitHub actions]
+   1. [Documentation]
+   1. [GitHub actions]
 
 [Documentation]: https://docs.github.com/en/rest/reference/actions
 [GitHub actions]: https://github.com/features/actions
