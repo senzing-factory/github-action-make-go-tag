@@ -41,9 +41,9 @@ prefixed with "v", whenever a semantically versioned tag is created.
 
 1. GitHub workflow
    1. [Documentation]
-   1. [GitHub actions]
+   1. [GitHub Actions]
 
 [Documentation]: https://docs.github.com/en/rest/reference/actions
-[GitHub actions]: https://github.com/features/actions
+[GitHub Actions]: https://github.com/features/actions
 [Is “v1.2.3” a semantic version?]: https://semver.org/#is-v123-a-semantic-version
 [Semantic Version]: https://semver.org/
