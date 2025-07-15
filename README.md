@@ -26,6 +26,9 @@ prefixed with "v", whenever a semantically versioned tag is created.
        tags:
          - "[0-9]+.[0-9]+.[0-9]+"
 
+   permissions:
+     contents: write
+
    jobs:
      build:
        name: Make a vM.m.P tag
