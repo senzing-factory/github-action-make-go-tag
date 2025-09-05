@@ -7,10 +7,14 @@
     "CCLA",
     "CODEOWNER",
     "DOCKERHUB",
+    "gpgsign",
     "ICLA",
     "Senzing",
+    "signingkey",
     "stackoverflow",
     "toplevel"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
