@@ -9,6 +9,8 @@
     "DOCKERHUB",
     "gpgsign",
     "ICLA",
+    "keyid",
+    "pinentry",
     "Senzing",
     "signingkey",
     "stackoverflow",
