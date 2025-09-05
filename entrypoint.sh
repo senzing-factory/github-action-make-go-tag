@@ -1,5 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -eu
+
+GPG_PRIVATE_KEY="${INPUT_GPG_PRIVATE_KEY:-}"
+GPG_PASSPHRASE="${INPUT_GPG_PASSPHRASE:-}"
 
 # Apply hotfix for 'fatal: unsafe repository' error.
 
@@ -7,8 +10,41 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
 # Required git configuration.
 
-git config user.name "${GITHUB_ACTOR}"
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+# Configure git and gpg if GPG key is provided.
+if [ -n "${GPG_PRIVATE_KEY}" ]; then
+  # Import the GPG key.
+  echo "[INFO] Importing GPG key."
+  echo "${GPG_PRIVATE_KEY}" | gpg --batch --yes --import
+
+  # If GPG_PASSPHRASE is set, unlock the key.
+  if [ -n "${GPG_PASSPHRASE}" ]; then
+    echo "[INFO] Unlocking GPG key."
+    echo "${GPG_PASSPHRASE}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign
+  fi
+
+  # Retrieve GPG key information.
+  public_key_id=$(gpg --list-secret-keys --keyid-format=long | grep sec | awk '{print $2}' | cut -d'/' -f2)
+  signing_key_email=$(gpg --list-keys --keyid-format=long "${public_key_id}" | grep uid | sed 's/.*<\(.*\)>.*/\1/')
+  signing_key_username=$(gpg --list-keys --keyid-format=long "${public_key_id}" | grep uid | sed 's/uid\s*\[\s*.*\]\s*//; s/\s*(.*//')
+
+  # Setup git user name, email, and signing key.
+  echo "[INFO] Setup git user name, email, and signing key."
+  git config --global user.name "${signing_key_username}"
+  git config --global user.email "${signing_key_email}"
+  git config --global user.signingkey "${public_key_id}"
+  git config --global commit.gpgsign true
+  git config --global tag.gpgSign true
+else
+  # Setup git user name and email.
+  echo "[INFO] Setup git user name and email."
+  git config --global user.name "${GITHUB_ACTOR}"
+  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+fi
+
+# Set up remote URL for token.
+if [ -n "${INPUT_GITHUB_TOKEN}" ]; then
+  git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+fi
 
 # Make the tag.
 

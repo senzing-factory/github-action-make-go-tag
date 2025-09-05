@@ -35,7 +35,7 @@ prefixed with "v", whenever a semantically versioned tag is created.
        runs-on: ubuntu-latest
        steps:
          - name: Checkout repository
-           uses: actions/checkout@v3
+           uses: actions/checkout@v5
          - name: Make go version tag
            uses: senzing-factory/github-action-make-go-tag@v2
    ```
