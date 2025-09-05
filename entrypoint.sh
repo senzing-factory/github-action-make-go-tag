@@ -40,8 +40,8 @@ fi
 
 # Set up remote URL for token.
 if [ -n "${GITHUB_TOKEN}" ]; then
-  echo "[INFO] gh auth login --with-token < ${GITHUB_TOKEN}"
-  gh auth login --with-token < "${GITHUB_TOKEN}"
+  echo "[INFO] gh auth login --with-token ${GITHUB_TOKEN}"
+  gh auth login --with-token "${GITHUB_TOKEN}"
 fi
 
 # Make the tag.
