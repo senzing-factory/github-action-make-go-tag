@@ -53,12 +53,12 @@ gh api \
   --method POST \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  /repos/${GITHUB_REPOSITORY}/git/tags \
+  /repos/"${GITHUB_REPOSITORY}"/git/tags \
    -f "tag=v${GITHUB_REF_NAME}" -f "message=Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}" -f "object=${GITHUB_SHA}" -f 'type=commit' -f "tagger[name]=${GITHUB_ACTOR}" -f "tagger[email]=${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com" -f "tagger[date]=$timestamp"
 
 gh api \
   --method POST \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  /repos/${GITHUB_REPOSITORY}/git/refs \
+  /repos/"${GITHUB_REPOSITORY}"/git/refs \
    -f "ref=refs/tags/v${GITHUB_REF_NAME}" -f "sha=${GITHUB_SHA}"
