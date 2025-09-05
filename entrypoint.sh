@@ -39,9 +39,9 @@ else
 fi
 
 # Set up remote URL for token.
-if [ -n "${GITHUB_TOKEN}" ]; then
-  echo "[INFO] git remote set-url origin https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-  git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+if [ -n "${GH_TOKEN}" ]; then
+  echo "[INFO] gh auth login"
+  gh auth login
 fi
 
 # Make the tag.
