@@ -48,6 +48,16 @@ fi
 
 echo "[INFO] cd ${GITHUB_WORKSPACE} || exit"
 cd "${GITHUB_WORKSPACE}" || exit
-echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
-git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
-git push origin "v${GITHUB_REF_NAME}"
+#echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
+#git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
+
+timestamp=$(date +"%Y-%m-%dT%H:%M:%S%z")
+
+gh api \
+  --method POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /repos/${GITHUB_REPOSITORY}/git/tags \
+   -f "tag=v${GITHUB_REF_NAME}" -f "message=Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}" -f "object=${GITHUB_SHA}" -f 'type=commit' -f "tagger[name]=${GITHUB_ACTOR}" -f "tagger[email]=${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com" -f "tagger[date]=$timestamp"
+
+#git push origin "v${GITHUB_REF_NAME}"
