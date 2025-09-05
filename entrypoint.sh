@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+GITHUB_ACTOR="${INPUT_GITHUB_ACTOR:-$GITHUB_ACTOR}"
+
 # Apply hotfix for 'fatal: unsafe repository' error.
 
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-
-# Required git configuration.
 
 # Configure git and gpg if GPG key is provided.
 if [ -n "${GPG_PRIVATE_KEY}" ]; then
@@ -48,8 +48,8 @@ fi
 
 echo "[INFO] cd ${GITHUB_WORKSPACE} || exit"
 cd "${GITHUB_WORKSPACE}" || exit
-echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
-git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
+#echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
+#git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
 
 timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 

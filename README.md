@@ -36,8 +36,16 @@ prefixed with "v", whenever a semantically versioned tag is created.
        steps:
          - name: Checkout repository
            uses: actions/checkout@v5
+           with:
+             persist-credentials: false
+
          - name: Make go version tag
            uses: senzing-factory/github-action-make-go-tag@v2
+           with:
+             actor: ${{ secrets.GITHUB_ACTOR }}
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+             gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
    ```
 
 ## References
