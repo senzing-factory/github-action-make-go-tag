@@ -1,12 +1,33 @@
-# action.yml
 name: "Create vM.m.P tag for Go module version"
 description: "Create a new tag based on the Semantic Version for use in Go dependency management."
 author: support@senzing.com
 
+inputs:
+  actor:
+    description: "Optional GitHub actor for signed commits. Must correspond to the noreply email used to create the GPG key."
+    default: ${{ github.actor }}
+  github_token:
+    description: "GH_TOKEN."
+    default: "${{ github.token }}"
+  gpg_passphrase:
+    description: "Optional. GPG key passphrase."
+    required: false
+  gpg_private_key:
+    description: "Optional. GPG key to sign the tag with."
+    required: false
+
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: composite
+  steps:
+    - name: Create vM.m.P tag for Go module version
+      shell: bash
+      run: ${{ github.action_path }}/entrypoint.sh
+      env:
+        INPUT_GITHUB_ACTOR: ${{ inputs.actor }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        GPG_PASSPHRASE: ${{ inputs.gpg_passphrase }}
+        GPG_PRIVATE_KEY: ${{ inputs.gpg_private_key }}
 
 branding:
-  icon: "git-pull-request"
-  color: "red"
+  icon: "tag"
+  color: "green"

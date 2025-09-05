@@ -7,8 +7,12 @@
     "CCLA",
     "CODEOWNER",
     "DOCKERHUB",
+    "gpgsign",
     "ICLA",
+    "keyid",
+    "pinentry",
     "Senzing",
+    "signingkey",
     "stackoverflow",
     "toplevel"
   ],
