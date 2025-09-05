@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -e
 
 GPG_PRIVATE_KEY="${INPUT_GPG_PRIVATE_KEY:-}"
 GPG_PASSPHRASE="${INPUT_GPG_PASSPHRASE:-}"
