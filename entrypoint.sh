@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-GPG_PRIVATE_KEY="${INPUT_GPG_PRIVATE_KEY:-}"
-GPG_PASSPHRASE="${INPUT_GPG_PASSPHRASE:-}"
-
 # Apply hotfix for 'fatal: unsafe repository' error.
 
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
