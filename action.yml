@@ -20,7 +20,7 @@ runs:
       shell: bash
       run: ${{ github.action_path }}/entrypoint.sh
       env:
-        GH_TOKEN: ${{ inputs.github_token }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
         GPG_PASSPHRASE: ${{ inputs.gpg_passphrase }}
         GPG_PRIVATE_KEY: ${{ inputs.gpg_private_key }}
 

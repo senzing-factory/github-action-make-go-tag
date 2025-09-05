@@ -39,13 +39,14 @@ else
 fi
 
 # Set up remote URL for token.
-if [ -n "${GH_TOKEN}" ]; then
-  echo "[INFO] gh auth login"
-  gh auth login
+if [ -n "${GITHUB_TOKEN}" ]; then
+  echo "[INFO] gh auth login --with-token < ${GITHUB_TOKEN}"
+  gh auth login --with-token < "${GITHUB_TOKEN}"
 fi
 
 # Make the tag.
 
+echo "[INFO] cd ${GITHUB_WORKSPACE} || exit"
 cd "${GITHUB_WORKSPACE}" || exit
 echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
 git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
