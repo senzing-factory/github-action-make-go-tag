@@ -48,8 +48,8 @@ fi
 
 echo "[INFO] cd ${GITHUB_WORKSPACE} || exit"
 cd "${GITHUB_WORKSPACE}" || exit
-#echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
-#git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
+echo "[INFO] git tag -a v${GITHUB_REF_NAME} -m Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
+git tag -a "v${GITHUB_REF_NAME}" -m "Go module tag for version ${GITHUB_REF_NAME} by ${GITHUB_ACTOR} ${GITHUB_WORKFLOW_SHA}"
 
 timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
