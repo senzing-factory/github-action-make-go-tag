@@ -39,7 +39,7 @@ else
 fi
 
 # Set up remote URL for token.
-if [ -n "${INPUT_GITHUB_TOKEN}" ]; then
+if [ -n "${GITHUB_TOKEN}" ]; then
   echo "[INFO] git remote set-url origin https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
   git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 fi
