@@ -2,19 +2,22 @@
   "version": "0.2",
   "language": "en",
   "words": [
-    "alnum",
-    "buildx",
     "CCLA",
     "CODEOWNER",
     "DOCKERHUB",
-    "gpgsign",
     "ICLA",
+    "Senzing",
+    "alnum",
+    "buildx",
+    "esbenp",
+    "gpgsign",
     "keyid",
     "pinentry",
-    "Senzing",
     "signingkey",
     "stackoverflow",
     "toplevel"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
