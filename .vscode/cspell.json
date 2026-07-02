@@ -2,13 +2,9 @@
   "version": "0.2",
   "language": "en",
   "words": [
-    "alnum",
-    "buildx",
     "CCLA",
     "CODEOWNER",
     "cooldown",
-    "DOCKERHUB",
-    "esbenp",
     "gpgsign",
     "ICLA",
     "kernelsam",
@@ -16,8 +12,7 @@
     "pinentry",
     "Senzing",
     "signingkey",
-    "stackoverflow",
-    "toplevel"
+    "stackoverflow"
   ],
   "ignorePaths": [".git/**"]
 }
